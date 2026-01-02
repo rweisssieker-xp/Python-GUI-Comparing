@@ -10,7 +10,7 @@ class Dashboard(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Python GUI Framework Comparison Dashboard (19+ Frameworks)")
+        self.title("Python GUI Framework Comparison Dashboard (25+ Frameworks)")
         self.geometry("1400x900")
 
         # Layout
@@ -40,6 +40,13 @@ class Dashboard(ctk.CTk):
             ("PyWebView (Embedded)", "example_pywebview.py"),
             ("Eel (Chrome/Web)", "example_eel.py"),
             ("Flexx (Python->JS)", "example_flexx.py"),
+            ("Streamlit (Data Science)", "example_streamlit.py"),
+            ("Gradio (ML/AI)", "example_gradio.py"),
+            ("Dash (Plotly)", "example_dash.py"),
+            ("Remi (Pure Python)", "example_remi.py"),
+            # Terminal UI
+            ("Textual (Terminal UI)", "example_textual.py"),
+            ("Rich (Terminal Library)", "example_rich.py"),
             # Specialized
             ("Gooey (CLI to GUI)", "example_gooey.py"),
             ("Toga (BeeWare/Native)", "example_toga.py"),
@@ -88,7 +95,7 @@ class Dashboard(ctk.CTk):
         
         # Category Filter
         ctk.CTkLabel(filter_row1, text="Category:").pack(side="left", padx=5)
-        self.category_filter = ctk.CTkOptionMenu(filter_row1, values=["All", "Standard & Modern", "Web-Based", "Specialized", "Legacy / Specialized Mockups"], command=lambda x: self.apply_filters())
+        self.category_filter = ctk.CTkOptionMenu(filter_row1, values=["All", "Standard & Modern", "Web-Based", "Terminal UI", "Specialized", "Legacy / Specialized Mockups"], command=lambda x: self.apply_filters())
         self.category_filter.pack(side="left", padx=5)
         
         # Platform Filter
@@ -186,14 +193,14 @@ class Dashboard(ctk.CTk):
         if sort_by == "Name":
             filtered.sort(key=lambda x: x[0])
         elif sort_by == "Learning Curve":
-            order = {"Einfach": 0, "Mittel": 1, "Schwer": 2}
-            filtered.sort(key=lambda x: order.get(FRAMEWORK_DATA[x[2]].get("learning_curve", "Mittel"), 1))
+            order = {"Easy": 0, "Medium": 1, "Hard": 2}
+            filtered.sort(key=lambda x: order.get(FRAMEWORK_DATA[x[2]].get("learning_curve", "Medium"), 1))
         elif sort_by == "Performance":
-            order = {"Hoch": 0, "Mittel": 1, "Niedrig": 2}
-            filtered.sort(key=lambda x: order.get(FRAMEWORK_DATA[x[2]].get("performance", "Mittel"), 1))
+            order = {"High": 0, "Medium": 1, "Low": 2}
+            filtered.sort(key=lambda x: order.get(FRAMEWORK_DATA[x[2]].get("performance", "Medium"), 1))
         elif sort_by == "Community":
-            order = {"Hoch": 0, "Mittel": 1, "Niedrig": 2}
-            filtered.sort(key=lambda x: order.get(FRAMEWORK_DATA[x[2]].get("community", "Mittel"), 1))
+            order = {"High": 0, "Medium": 1, "Low": 2}
+            filtered.sort(key=lambda x: order.get(FRAMEWORK_DATA[x[2]].get("community", "Medium"), 1))
         
         return filtered
 

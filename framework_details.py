@@ -530,6 +530,211 @@ app.go()
             "Smaller community"
         ],
         "documentation_url": "https://appjar.info/"
+    },
+    "Streamlit": {
+        "pros": [
+            "Extremely popular in data science",
+            "Very easy to learn",
+            "Automatic web interface",
+            "Great for dashboards and ML demos",
+            "Excellent documentation",
+            "Active community"
+        ],
+        "cons": [
+            "Web-based only",
+            "Limited customization",
+            "Not suitable for complex desktop apps",
+            "Requires browser"
+        ],
+        "code_example": """
+# Streamlit example
+import streamlit as st
+
+st.title("My App")
+st.write("Hello World")
+if st.button("Click Me"):
+    st.success("Clicked!")
+        """,
+        "installation": "pip install streamlit",
+        "limitations": [
+            "Web-based only",
+            "Limited to data science use cases",
+            "Not for traditional desktop apps"
+        ],
+        "documentation_url": "https://docs.streamlit.io/"
+    },
+    "Gradio": {
+        "pros": [
+            "Perfect for ML/AI demos",
+            "Very easy to use",
+            "Automatic interface generation",
+            "Great for sharing models",
+            "Growing rapidly",
+            "Good documentation"
+        ],
+        "cons": [
+            "Web-based only",
+            "Focused on ML/AI use cases",
+            "Less flexible than general frameworks",
+            "Requires browser"
+        ],
+        "code_example": """
+# Gradio example
+import gradio as gr
+
+def greet(name):
+    return f"Hello {name}!"
+
+demo = gr.Interface(fn=greet, inputs="text", outputs="text")
+demo.launch()
+        """,
+        "installation": "pip install gradio",
+        "limitations": [
+            "Web-based only",
+            "ML/AI focused",
+            "Less suitable for general apps"
+        ],
+        "documentation_url": "https://gradio.app/docs/"
+    },
+    "Textual": {
+        "pros": [
+            "Modern terminal UI",
+            "Beautiful terminal interfaces",
+            "Part of Rich ecosystem",
+            "Cross-platform",
+            "Good performance",
+            "Active development"
+        ],
+        "cons": [
+            "Terminal-only",
+            "Limited to terminal capabilities",
+            "Smaller community than web frameworks",
+            "Not suitable for graphical apps"
+        ],
+        "code_example": """
+# Textual example
+from textual.app import App
+
+class MyApp(App):
+    def compose(self):
+        yield Label("Hello World")
+        yield Button("Click Me")
+
+app = MyApp()
+app.run()
+        """,
+        "installation": "pip install textual",
+        "limitations": [
+            "Terminal-only interface",
+            "No graphical widgets",
+            "Limited to terminal capabilities"
+        ],
+        "documentation_url": "https://textual.textualize.io/"
+    },
+    "Rich": {
+        "pros": [
+            "Beautiful terminal output",
+            "Very popular",
+            "Easy to use",
+            "Great for CLI tools",
+            "Excellent documentation",
+            "Lightweight"
+        ],
+        "cons": [
+            "Terminal library, not full GUI",
+            "Limited interactivity",
+            "No event handling",
+            "Not suitable for complex UIs"
+        ],
+        "code_example": """
+# Rich example
+from rich.console import Console
+from rich.table import Table
+
+console = Console()
+table = Table()
+table.add_column("Name")
+table.add_row("Hello World")
+console.print(table)
+        """,
+        "installation": "pip install rich",
+        "limitations": [
+            "Library, not full framework",
+            "Limited interactivity",
+            "Terminal-only"
+        ],
+        "documentation_url": "https://rich.readthedocs.io/"
+    },
+    "Dash": {
+        "pros": [
+            "Plotly integration",
+            "Great for data dashboards",
+            "Professional analytics apps",
+            "Good documentation",
+            "Active community",
+            "React-based components"
+        ],
+        "cons": [
+            "Web-based only",
+            "Steeper learning curve",
+            "Requires React knowledge for advanced features",
+            "More complex than Streamlit"
+        ],
+        "code_example": """
+# Dash example
+import dash
+from dash import html, dcc
+
+app = dash.Dash(__name__)
+app.layout = html.Div([
+    html.H1("Hello World"),
+    dcc.Graph(figure={})
+])
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+        """,
+        "installation": "pip install dash",
+        "limitations": [
+            "Web-based only",
+            "Requires browser",
+            "More complex than Streamlit"
+        ],
+        "documentation_url": "https://dash.plotly.com/"
+    },
+    "Remi": {
+        "pros": [
+            "Pure Python web GUI",
+            "Lightweight",
+            "Easy to learn",
+            "No HTML/JS needed",
+            "Cross-platform",
+            "Good for simple web apps"
+        ],
+        "cons": [
+            "Web-based only",
+            "Smaller community",
+            "Less mature than alternatives",
+            "Limited advanced features"
+        ],
+        "code_example": """
+# Remi example
+import remi.gui as gui
+from remi import start, App
+
+class MyApp(App):
+    def main(self):
+        return gui.Label("Hello World")
+
+start(MyApp)
+        """,
+        "installation": "pip install remi",
+        "limitations": [
+            "Web-based only",
+            "Smaller community",
+            "Less feature-rich than alternatives"
+        ],
+        "documentation_url": "https://github.com/dddomodossola/remi"
     }
 }
 

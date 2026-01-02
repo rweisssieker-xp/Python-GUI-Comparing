@@ -14,6 +14,12 @@ pywebview
 flexx
 appJar
 gooey
+streamlit
+gradio
+textual
+rich
+dash
+remi
 
 # Additional dependencies
 # Note: datetime is part of Python standard library, no installation needed
