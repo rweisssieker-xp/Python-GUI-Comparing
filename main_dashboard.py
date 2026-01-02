@@ -422,10 +422,47 @@ class Dashboard(ctk.CTk):
         venv_python = os.path.join(os.path.dirname(__file__), ".venv", "Scripts", "python.exe")
         python_exec = venv_python if os.path.exists(venv_python) else sys.executable
         
+        # Special handling for frameworks that need different launch commands
+        if script_name == "example_streamlit.py":
+            # Streamlit needs to be run with 'streamlit run' command
+            venv_streamlit = os.path.join(os.path.dirname(__file__), ".venv", "Scripts", "streamlit.exe")
+            streamlit_exec = venv_streamlit if os.path.exists(venv_streamlit) else "streamlit"
+            try:
+                # Check if streamlit is available
+                result = subprocess.run([streamlit_exec, "--version"], capture_output=True, text=True, timeout=5)
+                if result.returncode != 0:
+                    raise FileNotFoundError("Streamlit not found")
+                process = subprocess.Popen([streamlit_exec, "run", path], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            except FileNotFoundError:
+                messagebox.showerror("Error", 
+                    "Streamlit is not installed.\n\n"
+                    "Please install it with:\n"
+                    "pip install streamlit\n\n"
+                    "Or if using a virtual environment:\n"
+                    ".venv\\Scripts\\activate\n"
+                    "pip install streamlit")
+            except Exception as e:
+                messagebox.showerror("Error", f"ERROR STARTING STREAMLIT: {str(e)}")
+                import traceback
+                print(traceback.format_exc())
+            return
+        
+        # Standard Python execution for all other frameworks
         try:
             process = subprocess.Popen([python_exec, path], creationflags=subprocess.CREATE_NEW_CONSOLE)
         except Exception as e:
-            messagebox.showerror("Error", f"ERROR STARTING DEMO: {str(e)}")
+            error_msg = str(e)
+            # Provide helpful error messages for common missing module errors
+            if "ModuleNotFoundError" in error_msg or "No module named" in error_msg:
+                missing_module = error_msg.split("'")[1] if "'" in error_msg else "unknown"
+                messagebox.showerror("Missing Dependency", 
+                    f"Required module '{missing_module}' is not installed.\n\n"
+                    f"Please install it with:\n"
+                    f"pip install {missing_module}\n\n"
+                    f"Or install all dependencies:\n"
+                    f"pip install -r requirements.txt")
+            else:
+                messagebox.showerror("Error", f"ERROR STARTING DEMO: {error_msg}")
             import traceback
             print(traceback.format_exc())
 

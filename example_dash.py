@@ -61,8 +61,10 @@ dashboard_layout = html.Div([
     ]),
     
     html.H3("System Synchronization State"),
-    dcc.Progress(value=72, id="sync-progress", style={'height': '30px'}),
-    html.P("72% Complete", id="sync-label"),
+    html.Div([
+        html.Progress(value=72, max=100, id="sync-progress", style={'width': '100%', 'height': '30px'}),
+        html.P("72% Complete", id="sync-label")
+    ]),
     
     html.H3("Sales Trend"),
     dcc.Graph(

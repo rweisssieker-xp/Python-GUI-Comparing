@@ -11,7 +11,6 @@ from rich.layout import Layout
 from rich.progress import Progress, BarColumn, TextColumn
 from rich.prompt import Prompt, Confirm
 from rich import box
-import time
 
 console = Console()
 

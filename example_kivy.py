@@ -6,7 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.slider import Slider
-from kivy.uix.checkbox import Checkbox
+from kivy.uix.checkbox import CheckBox
 from kivy.uix.switch import Switch
 from kivy.uix.spinner import Spinner
 from kivy.uix.progressbar import ProgressBar
@@ -106,15 +106,15 @@ class KivyUltimateCRM(App):
         adm_box.add_widget(Label(text="Commercial Model (B2B / B2C):", size_hint_y=None, height=30))
         r_box = BoxLayout(orientation='horizontal', size_hint_y=None, height=40)
         r_box.add_widget(Label(text="B2B"))
-        r_box.add_widget(Checkbox(group='m', active=True))
+        r_box.add_widget(CheckBox(group='m', active=True))
         r_box.add_widget(Label(text="B2C"))
-        r_box.add_widget(Checkbox(group='m'))
+        r_box.add_widget(CheckBox(group='m'))
         adm_box.add_widget(r_box)
         
         # 5/6. Checkbox & Switch
         row_feat = BoxLayout(orientation='horizontal', size_hint_y=None, height=40)
         row_feat.add_widget(Label(text="Marketing Opt-in:"))
-        row_feat.add_widget(Checkbox(active=True))
+        row_feat.add_widget(CheckBox(active=True))
         row_feat.add_widget(Label(text="Public Visibility:"))
         row_feat.add_widget(Switch(active=True))
         adm_box.add_widget(row_feat)

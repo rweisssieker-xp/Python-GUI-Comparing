@@ -5,7 +5,6 @@ Remi creates web interfaces using only Python
 
 import remi.gui as gui
 from remi import start, App
-import json
 
 class CRMApp(App):
     def __init__(self, *args):

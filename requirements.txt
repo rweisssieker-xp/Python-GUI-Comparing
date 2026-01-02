@@ -22,5 +22,7 @@ dash
 remi
 
 # Additional dependencies
+pandas
+plotly
 # Note: datetime is part of Python standard library, no installation needed
 # requests: Currently not used, but kept for potential future use

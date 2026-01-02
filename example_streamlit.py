@@ -123,3 +123,9 @@ elif page == "System Administration":
 # Footer
 st.markdown("---")
 st.caption("Streamlit CRM Demo - Built with Streamlit framework")
+
+# Note: Streamlit apps are typically run with: streamlit run example_streamlit.py
+# This if __name__ block allows direct execution for testing
+if __name__ == "__main__":
+    # Streamlit apps run automatically when imported, but we can add a note
+    pass

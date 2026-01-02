@@ -7,7 +7,6 @@ from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.widgets import Header, Footer, DataTable, Input, Button, Select, Checkbox, Label, ProgressBar, Static
 from textual.binding import Binding
-from datetime import datetime
 
 class CRMApp(App):
     """A Textual CRM application."""
